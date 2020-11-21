@@ -126,16 +126,17 @@ class MpdemoApplicationTests {
     void testSelectQuery() {
         // 创建QueryWrapper
         QueryWrapper<User> wrapper = new QueryWrapper<>();
-        // 实现的是comparable的接口
-        // ge 大于/gt 大于等于/le 小于等于/lt 小于等于
-        // eq 等于/ ne不等于
-        // between 之间
-        // like 模糊查询！
-        // orderBy 排序
-        // last 拼接
-        // 查询制定的列
-
-        // 年龄大于等于30
+        /**
+         * 实现的是comparable的接口
+         * ge 大于/gt 大于等于/le 小于等于/lt 小于等于
+         * eq 等于/ ne不等于
+         * between 之间
+         * like 模糊查询！
+         * orderBy 排序
+         * last 拼接, 直接把value中字符串拼接到sql最后面， 注意sql注入
+         * select, 制定查询的列
+         */
+        // E.g. 年龄大于等于30
         wrapper
                 .ge("age", "30")
                 .eq("name", "Jack");

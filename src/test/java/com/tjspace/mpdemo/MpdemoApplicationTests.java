@@ -1,5 +1,6 @@
 package com.tjspace.mpdemo;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tjspace.mpdemo.entity.User;
 import com.tjspace.mpdemo.mapper.UserMapper;
@@ -118,5 +119,30 @@ class MpdemoApplicationTests {
         int result = userMapper.deleteById(1329999688343183362L);
         System.out.println(result);
     }
+
+
+    // 复杂的mybatis查询
+    @Test
+    void testSelectQuery() {
+        // 创建QueryWrapper
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        // 实现的是comparable的接口
+        // ge 大于/gt 大于等于/le 小于等于/lt 小于等于
+        // eq 等于/ ne不等于
+        // between 之间
+        // like 模糊查询！
+        // orderBy 排序
+        // last 拼接
+        // 查询制定的列
+
+        // 年龄大于等于30
+        wrapper
+                .ge("age", "30")
+                .eq("name", "Jack");
+
+        List<User> users = userMapper.selectList(wrapper);
+        System.out.println(users);
+    }
+
 
 }

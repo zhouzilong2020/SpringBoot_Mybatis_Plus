@@ -34,6 +34,7 @@ class MpdemoApplicationTests {
         user.setAge(20);
         user.setEmail("lutianyiSB");
         user.setName("lutianyiSB");
+//        user.setId(1L);
         // 插入
         int insert = userMapper.insert(user);
         // 返回插入的行数
@@ -91,6 +92,8 @@ class MpdemoApplicationTests {
     void testPagination() {
         // 传入当前页， 和每页显示的数量
         Page<User> page = new Page(1, 3);
+
+
         userMapper.selectPage(page, null);
         // 或读到的数据都在page中
         System.out.println(page.getCurrent());  // 当前页面
